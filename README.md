@@ -98,3 +98,8 @@ curl -X PATCH http://localhost:3000/api/empleados/1/estado \
     "activo": false
   }'
 ```
+
+## 6. Colecciones de Postman
+
+Las colecciones de _Postman_ puedes encontrarlas en: <br>
+[test/postman-colletion/examen-empleados-api.postman_collection.json](test/postman-colletion/examen-empleados-api.postman_collection.json)
