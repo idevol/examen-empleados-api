@@ -1,0 +1,287 @@
+{
+  "info": {
+    "_postman_id": "ab829a08-3708-473b-93b5-b3a0b6eb515f",
+    "name": "examen-empleados-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14364126",
+    "_collection_link": "https://go.postman.co/collection/14364126-ab829a08-3708-473b-93b5-b3a0b6eb515f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "api/auth/login - ADMIN",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Parse the JSON response body\nvar jsonData = pm.response.json();\n\n// Set the access_token in the environment variable if it exists\nif (jsonData.access_token) {\n    pm.environment.set(\"amin_token\", jsonData.token);\n    pm.environment.set(\"access_token\", jsonData.access_token);\n}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"usuario\": \"admin\",\n    \"password\": \"Admin123!\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/auth/login",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/auth/login - CONSULTA",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Parse the JSON response body\nvar jsonData = pm.response.json();\n\n// Set the access_token in the environment variable if it exists\nif (jsonData.access_token) {\n    pm.environment.set(\"amin_token\", jsonData.token);\n    pm.environment.set(\"access_token\", jsonData.access_token);\n}"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"usuario\": \"consulta\",\n    \"password\": \"Consulta123!\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/auth/login",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/empleados",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/api/empleados",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "empleados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/empleados",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nombreCompleto\": \"María López Ruiz\",\n    \"area\": \"TECNOLOGIA\",\n    \"puesto\": \"Desarrolladora Backend\",\n    \"genero\": \"FEMENINO\",\n    \"fechaEntrada\": \"2026-11-02\",\n    \"fechaNacimiento\": \"1994-05-17\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/empleados",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "empleados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/empleados - SIN NOMBRE",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"area\": \"TECNOLOGIA\",\n    \"puesto\": \"Desarrolladora Backend\",\n    \"genero\": \"FEMENINO\",\n    \"fechaEntrada\": \"2026-11-02\",\n    \"fechaNacimiento\": \"1994-05-17\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/empleados",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "empleados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/empleados - Unauthorized",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/api/empleados",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "empleados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/empleados/6/estado",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"activo\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/empleados/6/estado",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "empleados",
+            "6",
+            "estado"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/empleados/999/estado NOT FOUND",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{access_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"activo\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{host}}/api/empleados/999/estado",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "empleados",
+            "999",
+            "estado"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
